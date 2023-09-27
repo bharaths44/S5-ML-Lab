@@ -1,20 +1,12 @@
-# Load the necessary libraries
-
 library(ggplot2)
+setwd(file.path("C:\\Users\\student\\Downloads"))
 
-# Load the Titanic dataset
-data("Titanic")
-
-# Convert the dataset to a data frame
-titanic_df <- as.data.frame(Titanic)
-
-# Create a simple histogram of passenger ages
-ggplot(titanic_df, aes(x=Age, y=Freq)) + 
-  geom_col() + 
-  scale_x_discrete(limits = titanic_df$Age)+ 
-  labs(
-    title = "Age Distribution of Titanic Passengers",
-    x = "Age",
-    y = "Count",
-    fill = "Age"
-  ) 
+Titanic <- read.csv("titanic.csv")
+titanic <- as.data.frame(Titanic)
+histogram <- ggplot(titanic, aes(x = Age)) +
+  geom_histogram(binwidth = 5,fill = "Black",color = "White")+
+  labs(title = "Histogram of Age information",
+       x = "Age",
+       y = "Frequency",
+       fill = "Survived")
+print(histogram)
