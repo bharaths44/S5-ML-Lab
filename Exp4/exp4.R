@@ -9,8 +9,12 @@ data("Titanic")
 titanic_df <- as.data.frame(Titanic)
 
 # Create a simple histogram of passenger ages
-histogram<-ggplot(titanic_df, aes(x=Age, y=Freq)) + 
+ggplot(titanic_df, aes(x=Age, y=Freq)) + 
   geom_col() + 
-  scale_x_discrete(limits = titanic_df$Age)
-
-print(histogram)
+  scale_x_discrete(limits = titanic_df$Age)+ 
+  labs(
+    title = "Age Distribution of Titanic Passengers",
+    x = "Age",
+    y = "Count",
+    fill = "Age"
+  ) 
