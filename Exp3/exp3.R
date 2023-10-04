@@ -7,7 +7,7 @@ data(iris)
 
 scatter_plot <- ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species, shape = Species)) +
   geom_point(size = 2) + 
-  geom_smooth(method = "lm", se = FALSE, color = "black", linetype = "dashed") +  # Add a regression line
+ # geom_smooth(method = "lm", se = FALSE, color = "black") +  # Add a regression line
   labs(title = "Scatter Plot of Sepal Length vs. Sepal Width",
        x = "Sepal Length",
        y = "Sepal Width") +  
