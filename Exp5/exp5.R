@@ -13,26 +13,13 @@ splitIndex <- createDataPartition(soybean$Class, p = 0.8, list = FALSE)
 training_data <- soybean[splitIndex, ]
 testing_data <- soybean[-splitIndex, ]
 
-# Load required packages
-library
 
-# Train a Random Forest classifier
-model <- train(Class ~ ., data = training_data, method = "rf")
-
-# Make predictions on the testing data
 predictions <- predict(model, newdata = testing_data)
 predictions <- as.factor(predictions)
 
-sink(file = "exp5_output.txt")
+sink(file = "C:/Users/student/Documents/u2109018/exp5/exp5_output.txt")
+
 testing_data$Class<-as.factor(testing_data$Class)
-typeof(testing_data$Class)
-typeof(predictions)
-
-
-# Evaluate the model's performance
-confusionMatrix(predictions, testing_data$Class)
-
-
 
 
 print("----------- Naive Bayes Classifier ------------")
@@ -50,3 +37,4 @@ confusion_matrix <- confusionMatrix(predictions, testing_data$Class)
 print(confusion_matrix)
 
 sink(file = NULL)
+
