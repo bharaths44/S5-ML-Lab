@@ -1,14 +1,5 @@
-
-> testing_data$Class<-as.factor(testing_data$Class)
-
-> typeof(testing_data$Class)
 [1] "integer"
-
-> typeof(predictions)
 [1] "integer"
-
-> # Evaluate the model's performance
-> confusionMatrix(predictions, testing_data$Class)
 Confusion Matrix and Statistics
 
                         Reference
@@ -173,5 +164,168 @@ Prevalence                            0.03636                     0.03636
 Detection Rate                        0.03636                     0.03636
 Detection Prevalence                  0.03636                     0.03636
 Balanced Accuracy                     1.00000                     1.00000
+[1] "----------- Naive Bayes Classifier ------------"
+Confusion Matrix and Statistics
 
-> sink(file = NULL)
+                        Reference
+Prediction               alternarialeaf-spot anthracnose bacterial-blight
+  alternarialeaf-spot                     18           0                0
+  anthracnose                              0           3                0
+  bacterial-blight                         0           0                4
+  bacterial-pustule                        0           0                0
+  brown-spot                               0           0                0
+  brown-stem-rot                           0           0                0
+  charcoal-rot                             0           0                0
+  diaporthe-stem-canker                    0           3                0
+  downy-mildew                             0           0                0
+  frog-eye-leaf-spot                       0           0                0
+  phyllosticta-leaf-spot                   0           0                0
+  phytophthora-rot                         0           2                0
+  powdery-mildew                           0           0                0
+  purple-seed-stain                        0           0                0
+  rhizoctonia-root-rot                     0           0                0
+                        Reference
+Prediction               bacterial-pustule brown-spot brown-stem-rot charcoal-rot
+  alternarialeaf-spot                    0          2              0            0
+  anthracnose                            0          0              0            0
+  bacterial-blight                       2          0              0            0
+  bacterial-pustule                      1          0              0            0
+  brown-spot                             0          7              0            0
+  brown-stem-rot                         0          0              2            0
+  charcoal-rot                           0          0              4            4
+  diaporthe-stem-canker                  0          0              0            0
+  downy-mildew                           1          0              0            0
+  frog-eye-leaf-spot                     0          0              0            0
+  phyllosticta-leaf-spot                 0          9              0            0
+  phytophthora-rot                       0          0              0            0
+  powdery-mildew                         0          0              2            0
+  purple-seed-stain                      0          0              0            0
+  rhizoctonia-root-rot                   0          0              0            0
+                        Reference
+Prediction               diaporthe-stem-canker downy-mildew frog-eye-leaf-spot
+  alternarialeaf-spot                        0            0                  7
+  anthracnose                                0            0                  0
+  bacterial-blight                           0            0                  0
+  bacterial-pustule                          0            0                  0
+  brown-spot                                 0            0                  0
+  brown-stem-rot                             0            0                  0
+  charcoal-rot                               0            0                  0
+  diaporthe-stem-canker                      4            0                  0
+  downy-mildew                               0            4                  0
+  frog-eye-leaf-spot                         0            0                  9
+  phyllosticta-leaf-spot                     0            0                  2
+  phytophthora-rot                           0            0                  0
+  powdery-mildew                             0            0                  0
+  purple-seed-stain                          0            0                  0
+  rhizoctonia-root-rot                       0            0                  0
+                        Reference
+Prediction               phyllosticta-leaf-spot phytophthora-rot powdery-mildew
+  alternarialeaf-spot                         0                0              0
+  anthracnose                                 0                0              0
+  bacterial-blight                            0                0              0
+  bacterial-pustule                           0                0              0
+  brown-spot                                  0                0              0
+  brown-stem-rot                              0                0              0
+  charcoal-rot                                0                0              0
+  diaporthe-stem-canker                       0                0              0
+  downy-mildew                                0                0              0
+  frog-eye-leaf-spot                          0                0              0
+  phyllosticta-leaf-spot                      4                0              0
+  phytophthora-rot                            0                4              0
+  powdery-mildew                              0                0              4
+  purple-seed-stain                           0                0              0
+  rhizoctonia-root-rot                        0                0              0
+                        Reference
+Prediction               purple-seed-stain rhizoctonia-root-rot
+  alternarialeaf-spot                    0                    0
+  anthracnose                            0                    0
+  bacterial-blight                       0                    0
+  bacterial-pustule                      0                    0
+  brown-spot                             0                    0
+  brown-stem-rot                         0                    0
+  charcoal-rot                           0                    0
+  diaporthe-stem-canker                  0                    0
+  downy-mildew                           0                    0
+  frog-eye-leaf-spot                     0                    0
+  phyllosticta-leaf-spot                 0                    0
+  phytophthora-rot                       0                    0
+  powdery-mildew                         0                    0
+  purple-seed-stain                      4                    0
+  rhizoctonia-root-rot                   0                    4
+
+Overall Statistics
+                                          
+               Accuracy : 0.6909          
+                 95% CI : (0.5957, 0.7755)
+    No Information Rate : 0.1636          
+    P-Value [Acc > NIR] : < 2.2e-16       
+                                          
+                  Kappa : 0.6612          
+                                          
+ Mcnemar's Test P-Value : NA              
+
+Statistics by Class:
+
+                     Class: alternarialeaf-spot Class: anthracnose
+Sensitivity                              1.0000            0.37500
+Specificity                              0.9022            1.00000
+Pos Pred Value                           0.6667            1.00000
+Neg Pred Value                           1.0000            0.95327
+Prevalence                               0.1636            0.07273
+Detection Rate                           0.1636            0.02727
+Detection Prevalence                     0.2455            0.02727
+Balanced Accuracy                        0.9511            0.68750
+                     Class: bacterial-blight Class: bacterial-pustule
+Sensitivity                          1.00000                 0.250000
+Specificity                          0.98113                 1.000000
+Pos Pred Value                       0.66667                 1.000000
+Neg Pred Value                       1.00000                 0.972477
+Prevalence                           0.03636                 0.036364
+Detection Rate                       0.03636                 0.009091
+Detection Prevalence                 0.05455                 0.009091
+Balanced Accuracy                    0.99057                 0.625000
+                     Class: brown-spot Class: brown-stem-rot Class: charcoal-rot
+Sensitivity                    0.38889               0.25000             1.00000
+Specificity                    1.00000               1.00000             0.96226
+Pos Pred Value                 1.00000               1.00000             0.50000
+Neg Pred Value                 0.89320               0.94444             1.00000
+Prevalence                     0.16364               0.07273             0.03636
+Detection Rate                 0.06364               0.01818             0.03636
+Detection Prevalence           0.06364               0.01818             0.07273
+Balanced Accuracy              0.69444               0.62500             0.98113
+                     Class: diaporthe-stem-canker Class: downy-mildew
+Sensitivity                               1.00000             1.00000
+Specificity                               0.97170             0.99057
+Pos Pred Value                            0.57143             0.80000
+Neg Pred Value                            1.00000             1.00000
+Prevalence                                0.03636             0.03636
+Detection Rate                            0.03636             0.03636
+Detection Prevalence                      0.06364             0.04545
+Balanced Accuracy                         0.98585             0.99528
+                     Class: frog-eye-leaf-spot Class: phyllosticta-leaf-spot
+Sensitivity                            0.50000                       1.00000
+Specificity                            1.00000                       0.89623
+Pos Pred Value                         1.00000                       0.26667
+Neg Pred Value                         0.91089                       1.00000
+Prevalence                             0.16364                       0.03636
+Detection Rate                         0.08182                       0.03636
+Detection Prevalence                   0.08182                       0.13636
+Balanced Accuracy                      0.75000                       0.94811
+                     Class: phytophthora-rot Class: powdery-mildew
+Sensitivity                          1.00000               1.00000
+Specificity                          0.98113               0.98113
+Pos Pred Value                       0.66667               0.66667
+Neg Pred Value                       1.00000               1.00000
+Prevalence                           0.03636               0.03636
+Detection Rate                       0.03636               0.03636
+Detection Prevalence                 0.05455               0.05455
+Balanced Accuracy                    0.99057               0.99057
+                     Class: purple-seed-stain Class: rhizoctonia-root-rot
+Sensitivity                           1.00000                     1.00000
+Specificity                           1.00000                     1.00000
+Pos Pred Value                        1.00000                     1.00000
+Neg Pred Value                        1.00000                     1.00000
+Prevalence                            0.03636                     0.03636
+Detection Rate                        0.03636                     0.03636
+Detection Prevalence                  0.03636                     0.03636
+Balanced Accuracy                     1.00000                     1.00000

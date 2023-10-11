@@ -1,11 +1,6 @@
-#install.packages("mlbench")
-#install.packages("caret")
-#install.packages("ggplot2")
-#install.packages("randomForest")
-
 library(mlbench)
 library(caret)
-dataset <- read.csv("~/Bharath CSBs/Soybean.csv")
+dataset <- read.csv("C:/Users/student/Documents/u2109018/exp5/Soybean.csv")
 dataset
 
 
@@ -19,7 +14,7 @@ training_data <- soybean[splitIndex, ]
 testing_data <- soybean[-splitIndex, ]
 
 # Load required packages
-library(randomForest)
+library
 
 # Train a Random Forest classifier
 model <- train(Class ~ ., data = training_data, method = "rf")
@@ -36,5 +31,22 @@ typeof(predictions)
 
 # Evaluate the model's performance
 confusionMatrix(predictions, testing_data$Class)
+
+
+
+
+print("----------- Naive Bayes Classifier ------------")
+#install.packages("e1071")
+library(e1071)
+# Train the Naive Bayes classifier
+nb_model <- naiveBayes(Class ~ ., data = training_data)
+# Make predictions on the testing data
+predictions <- predict(nb_model, newdata = testing_data)
+# Load the caret package (if not already loaded)
+library(caret)
+# Create a confusion matrix
+confusion_matrix <- confusionMatrix(predictions, testing_data$Class)
+# View the confusion matrix and associated metrics
+print(confusion_matrix)
 
 sink(file = NULL)
