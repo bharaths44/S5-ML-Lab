@@ -9,7 +9,6 @@ preproc <- preProcess(iris[, -5], method = c("center", "scale"))
 iris[, -5] <- predict(preproc, iris[, -5])
 
 split_index <- createDataPartition(iris$Species, p = 0.8, list = FALSE)
-
 training_data <- iris[split_index, ]
 testing_data <- iris[-split_index, ]
 
@@ -23,7 +22,6 @@ classifier_knn <- knn(
     cl = training_data$Species,
     k = 3
 )
-
 confusionMatrix(testing_data$Species, classifier_knn)
 
 print("K=5")

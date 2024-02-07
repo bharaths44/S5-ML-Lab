@@ -13,13 +13,11 @@ titanic <- titanic[, c(
     "SibSp", "Parch", "Embarked", "Survived"
 )]
 
-
 set.seed(123)
 titanic <- na.omit(titanic)
 split_index <- createDataPartition(titanic$Survived, p = 0.8, list = FALSE)
 training_data <- titanic[split_index, ]
 testing_data <- titanic[-split_index, ]
-
 
 tree_model <- rpart(Survived ~ ., data = training_data, method = "class")
 prp(tree_model) # plot the tree model in plots gui
