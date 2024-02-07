@@ -1,57 +1,47 @@
-library(e1071) 
-library(caTools) 
-library(class) 
+library(caret)
+library(class)
 
-head(iris) 
+data(iris)
+set.seed(123)
 
-split <- sample.split(iris, SplitRatio = 0.8) 
-train_cl <- subset(iris, split == "TRUE") 
-test_cl <- subset(iris, split == "FALSE") 
 
-train_scale <- scale(train_cl[, 1:4]) 
-test_scale <- scale(test_cl[, 1:4]) 
+preproc <- preProcess(iris[, -5], method = c("center", "scale"))
+iris[, -5] <- predict(preproc, iris[, -5])
 
-cm <- table(test_cl$Species, classifier_knn) 
-cm 
+split_index <- createDataPartition(iris$Species, p = 0.8, list = FALSE)
 
-#K = 3
-classifier_knn <- knn(train = train_scale, 
-                      test = test_scale, 
-                      cl = train_cl$Species, 
-                      k = 3)
-classifier_knn
-misClassError <- mean(classifier_knn != test_cl$Species) 
-print(paste('Accuracy =', 1-misClassError)) 
+training_data <- iris[split_index, ]
+testing_data <- iris[-split_index, ]
 
-# K = 5 
-classifier_knn <- knn(train = train_scale, 
-                      test = test_scale, 
-                      cl = train_cl$Species, 
-                      k = 5) 
-misClassError <- mean(classifier_knn != test_cl$Species) 
-print(paste('Accuracy =', 1-misClassError)) 
+# Target variable needs to be omitted from training and testing data
+# the cl(class label) is the target variable to be predicted
+print("K=3")
+print("========================================")
+classifier_knn <- knn(
+    train = training_data[, -5],
+    test = testing_data[, -5],
+    cl = training_data$Species,
+    k = 3
+)
 
-# K = 7 
-classifier_knn <- knn(train = train_scale, 
-                      test = test_scale, 
-                      cl = train_cl$Species, 
-                      k = 7) 
-misClassError <- mean(classifier_knn != test_cl$Species) 
-print(paste('Accuracy =', 1-misClassError)) 
+confusionMatrix(testing_data$Species, classifier_knn)
 
-# K = 15 
-classifier_knn <- knn(train = train_scale, 
-                      test = test_scale, 
-                      cl = train_cl$Species, 
-                      k = 15) 
-misClassError <- mean(classifier_knn != test_cl$Species) 
-print(paste('Accuracy =', 1-misClassError)) 
+print("K=5")
+print("========================================")
+classifier_knn <- knn(
+    train = training_data[, -5],
+    test = testing_data[, -5],
+    cl = training_data$Species,
+    k = 5
+)
+confusionMatrix(testing_data$Species, classifier_knn)
 
-# K = 19 
-classifier_knn <- knn(train = train_scale, 
-                      test = test_scale, 
-                      cl = train_cl$Species, 
-                      k = 19) 
-misClassError <- mean(classifier_knn != test_cl$Species) 
-print(paste('Accuracy =', 1-misClassError)) 
-
+print("K=7")
+print("========================================")
+classifier_knn <- knn(
+    train = training_data[, -5],
+    test = testing_data[, -5],
+    cl = training_data$Species,
+    k = 7
+)
+confusionMatrix(testing_data$Species, classifier_knn)
